@@ -16,3 +16,7 @@ def click(pos=NULL):
 		moveto(pos)
 		sleep(1)
 		click()
+
+def scroll(n=1):
+	for _ in range(n):
+		gui.scroll(-100)

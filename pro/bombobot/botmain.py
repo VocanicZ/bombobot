@@ -21,7 +21,7 @@ async def on_message(message):
   curscreen()
   await message.delete()
   count = 0
-  command = 'menu : goto main menu \nbalance : current balance on screen \nheros : display all heros \nmap : open map menu \nworkall : force every heros to work \nrestall : force every heros to rest \nback : return to main menu \nclose : close pop-up '
+  command = 'menu : goto main menu \nbalance : current balance on screen \nheros : display all heros \nmap : open map menu \nworkall : force every heros to work \nrestall : force every heros to rest \nback : return to main menu \nclose : close pop-up \njoin our sheet -> https://docs.google.com/spreadsheets/d/1UqdWBjrXFToku7G1YfuEgTZM2PN3be-ilmuoYgUnYQA/edit?usp=sharing'
   if message.content == "menu":
     while not get_loc('heros_button') and count < 10:
       if get_loc('close_button'):
@@ -76,15 +76,26 @@ async def on_message(message):
         sleep(1)
       count+=1
     if get_loc('refheros'):
-      loc = (4000,1300)
+      loc = (4000,1320)
       for _ in range(5):
         click(loc)
         sleep(2)
   elif message.content == 'restall':
-    loc = (4125, 500)
-    for _ in range(5):
-      click(loc)
-      sleep(2)
+    while not get_loc('refheros') and count < 10:
+      if get_loc('heros_button'):
+        click_img('heros_button',delay=1,y=500)
+      elif get_loc('back_button'):
+        click_img('back_button',delay=1,x=800,y=100)
+      elif get_loc('close_button'):
+        click_img('close_button',delay=1,x=200,y=100)
+      else:
+        sleep(1)
+      count+=1
+    if get_loc('refheros'):
+      loc = (4125, 500)
+      for _ in range(5):
+        click(loc)
+        sleep(2)
   curscreen()
   await message.channel.purge(limit=3)
   now = datetime.now()
