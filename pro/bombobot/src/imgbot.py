@@ -5,6 +5,7 @@ import numpy as np
 import pyautogui as gui
 from src.ai import *
 from src.fl import *
+from PIL import Image
 
 gui.FAILSAFE = False
 
@@ -54,3 +55,18 @@ def click_img(name, delay=0, cur='curscreen', x=20, y=20):
 		loc = conv_loc(loc,x=x,y=y)
 		click(loc)
 		sleep(delay)
+  
+def get_not_black(img):
+        img = Image.open(get_img_path(img)).convert('RGB')
+        for i in range(width):
+                for j in range(height):
+                        #print('line {},{} -> {}'.format(i,j,img[i][j]))
+                        if img.getpixel((i,j)) != (0,0,0):
+                                print('FOUND! {}<{}'.format(i,j))
+                                return (i+1980,j)
+def moving_pos():
+        tmp =  get_curscreen()
+        sleep(0.01)
+        cur = get_curscreen()
+        set_img('diff',np.abs(tmp - cur))
+        moveto(get_not_black('diff'))

@@ -1,7 +1,7 @@
 from src.ai import *
 import asyncio
 
-pos = {'map':(4328,840), 'm_back':(3000,90), 'm_nextmap':(4572,1257), 'm_hero':(4322,1555), 'm_close_hero':(4333,299), 'm_hero_top':(4100,500), 'm_hero_bottom':(4000,1333)}
+pos = {'map':(4328,840), 'm_back':(3000,90), 'm_nextmap':(4572,1257), 'm_hero':(4322,1555), 'm_close_hero':(4333,299), 'm_hero_top':(4100,500), 'm_hero_bottom':(4000,1333), 'bot_bar': (3925,1100)}
 cycle = 50 #minutes
 max = 29 #cycle
 
