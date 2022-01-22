@@ -47,13 +47,14 @@ def increment(data, x=0, y=0):
         
 def dof(n, data, nx=0,ny=0):
         for k in n:
+                print('clicking {}',k)
                 if isinstance(k, int):
                         if k == 0:
                                 click()
                         elif k == 1:
                                 sleep(1)
                         elif isinstance(k, str):
-                                click(increment(data[k]), x=nx, y=ny)
+                                click(increment(data[k], x=nx, y=ny))
                 if ison_curscreen(get_img_path('disconnect')):
                         winsound.PlaySound("SystemHand", winsound.SND_ALIAS)
 
@@ -61,23 +62,28 @@ def temporary_main():
         dis_x = 619
         dis_y = 360
         dis_num = 3
-        data = {'back': (0,0), 'map': (0,0), 'hero': (0,0), 'work': (0,0), 'close': (0,0)}
+        data = {'back': (3099,128), 'map': (3422,318), 'hero': (3425,522), 'work': (3362,207), 'close': (3468,171)}
         script = [['close', 'back', 'map'], ['hero', 0, 'work', 1, 'close']]
         remap = 4
         cycle = 1000
         for i in range(1, cycle):
                 for n in range(dis_num):
+                        print('debug')
                         if n < 3:
                                 x = n*dis_x
                         y = 0
-                        if i*remap%40 == 0:
+                        i == 10
+                        if (i*remap)%40 == 0:
                                 dof(script[1], data, nx=x, ny=y)
                         dof(script[0], data, nx=x, ny=y)
                 sleep(mtos(remap))
 
-cur_pos()   #(5760, 1620)
+#cur_pos()   #(5760, 1620)
 #output_screen_pos()
 
+#===================================================================================================================
+#-------------------------A LOT OF BUGS-----------------------------------------------------------------------------
+#======================VOCANICZ PLEASE FIX==========================================================================
 
 if __name__ == '__main__':
         temporary_main()
