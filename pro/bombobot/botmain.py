@@ -5,7 +5,7 @@ from src.imgbot import *
 from src.fl import *
 from datetime import datetime
 
-token = "OTA1Mjc1OTA3NjI1ODUyOTM4.YYHt4w.poRy7GYnw1Jwng18KqwT66fIx28"
+token = "bruh"
 client = commands.Bot(command_prefix='.')#discord.Client()
 
 @client.event
